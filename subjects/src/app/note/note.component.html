@@ -1,0 +1,2 @@
+<app-note-list [notes]="noteList | async"></app-note-list>
+<app-note-item *ngIf="editedNote | async" [note]="editedNote | async"></app-note-item>
