@@ -1,0 +1,7 @@
+<h3>Note List Component</h3>
+
+<ul>
+    <li *ngFor="let note of notes$ | async">
+        <span>Note Id: {{ note.noteId }} - Note: {{ note.text }}</span>
+    </li>
+</ul>
