@@ -10,12 +10,11 @@ import { Observable } from 'rxjs';
 })
 export class NoteComponent implements OnInit {
   noteList: Observable<Note[]>;
-  editedNote: Observable<Note>;
+  editedNote: Note;
 
   constructor(private noteService: NoteService) {}
 
   ngOnInit() {
     this.noteList = this.noteService.getNotes();
-    this.editedNote = this.noteService.editedNote;
   }
 }

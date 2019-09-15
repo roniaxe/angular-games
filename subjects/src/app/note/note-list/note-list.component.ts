@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Note } from '../interfaces/note';
-import { NoteService } from '../note.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-note-list',
@@ -9,20 +8,16 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./note-list.component.scss']
 })
 export class NoteListComponent implements OnInit {
-  @Input() notes: Note[];
-  selected: Note;
+  @Input() notes$: Observable<Note[]>;
+  @Output() selectedNoteEventEmitter = new EventEmitter<Note>();
+  selectedNoteId: number;
 
-  constructor(private noteService: NoteService) {}
+  constructor() {}
 
   ngOnInit() {}
 
   onSelect(note: Note): void {
-    if (this.selected && this.selected.id === note.id) {
-      this.selected = undefined;
-    } else {
-      this.selected = note;
-    }
-
-    this.noteService.onEdit(this.selected ? { ...this.selected } : undefined);
+    this.selectedNoteId = note.id;
+    this.selectedNoteEventEmitter.next(note);
   }
 }

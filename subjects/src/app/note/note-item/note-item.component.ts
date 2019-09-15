@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Note } from '../interfaces/note';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-note-item',
@@ -7,7 +8,7 @@ import { Note } from '../interfaces/note';
   styleUrls: ['./note-item.component.scss']
 })
 export class NoteItemComponent implements OnInit {
-  @Input() note: Note;
+  @Input() note: Observable<Note>;
 
   constructor() { }
 
