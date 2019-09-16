@@ -8,6 +8,7 @@ import { NoteComponent } from './note.component';
 import { FacadeService } from './facade.service';
 import { StateService } from './state/state.service';
 import { NoteApi } from './api/note.api';
+import { NoteRoutingModule } from './note-routing.module';
 
 
 
@@ -15,7 +16,8 @@ import { NoteApi } from './api/note.api';
   declarations: [NoteComponent, NoteListComponent, NoteDetailsComponent],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    NoteRoutingModule
   ],
   providers: [FacadeService, StateService, NoteApi]
 })
